@@ -1,0 +1,13 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<h1>Agendamiento de Citas</h1>
+
+<form method="post" asp-page="ValidarDocumento">
+    <label for="documento">Número de Documento:</label>
+    <input type="text" id="documento" name="documento" required maxlength="10" />
+    <button type="submit">Ingresar</button>
+</form>

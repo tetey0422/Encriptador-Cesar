@@ -1,0 +1,51 @@
+@page
+@model GestionUsuariosModel
+@{
+    ViewData["Title"] = "Gestión de Usuarios";
+}
+
+<h1>Gestión de Usuarios</h1>
+
+<h2>Agregar Nuevo Usuario</h2>
+<form method="post">
+    <div>
+        <label for="Nombre">Nombre:</label>
+        <input type="text" id="Nombre" asp-for="NuevoUsuario.Nombre" required />
+    </div>
+    <div>
+        <label for="Documento">Documento:</label>
+        <input type="text" id="Documento" asp-for="NuevoUsuario.Documento" required />
+    </div>
+    <div>
+        <label for="EsEmpleado">Es Empleado:</label>
+        <input type="checkbox" id="EsEmpleado" asp-for="NuevoUsuario.EsEmpleado" />
+    </div>
+    <div>
+        <label for="EsAdministrador">Es Administrador:</label>
+        <input type="checkbox" id="EsAdministrador" asp-for="NuevoUsuario.EsAdministrador" />
+    </div>
+    <button type="submit">Agregar Usuario</button>
+</form>
+
+<h2>Lista de Usuarios</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Documento</th>
+            <th>Es Empleado</th>
+            <th>Es Administrador</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var usuario in Model.Usuarios)
+        {
+            <tr>
+                <td>@usuario.Nombre</td>
+                <td>@usuario.Documento</td>
+                <td>@usuario.EsEmpleado</td>
+                <td>@usuario.EsAdministrador</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,39 @@
+@page
+@model CalendarioModel
+@{
+    ViewData["Title"] = "Calendario de Citas";
+}
+
+<h1>Calendario de Citas</h1>
+<p>Documento: @Model.Documento</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Día</th>
+            <th>Disponibilidad</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dia in Model.Dias)
+        {
+            <tr>
+                <td>@dia.Dia</td>
+                <td style="background-color: @dia.Color;">@dia.Disponibilidad%</td>
+                <td>
+                    @if (dia.Disponibilidad > 0)
+                    {
+                        <a asp-page="ReservarCita" asp-route-dia="@dia.Dia" asp-route-documento="@Model.Documento" class="btn btn-primary">
+                            Reservar
+                        </a>
+                    }
+                    else
+                    {
+                        <span>No disponible</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

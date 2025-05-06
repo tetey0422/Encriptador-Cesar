@@ -1,0 +1,61 @@
+E:\proyecto integrador\publish\proyecto integrador.exe
+E:\proyecto integrador\publish\appsettings.Development.json
+E:\proyecto integrador\publish\appsettings.json
+E:\proyecto integrador\publish\proyecto integrador.dll
+E:\proyecto integrador\publish\proyecto integrador.runtimeconfig.json
+E:\proyecto integrador\publish\proyecto integrador.pdb
+E:\proyecto integrador\publish\Azure.Core.dll
+E:\proyecto integrador\publish\Azure.Identity.dll
+E:\proyecto integrador\publish\Microsoft.AspNetCore.Cryptography.Internal.dll
+E:\proyecto integrador\publish\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\proyecto integrador\publish\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\proyecto integrador\publish\Microsoft.Bcl.AsyncInterfaces.dll
+E:\proyecto integrador\publish\Microsoft.Data.SqlClient.dll
+E:\proyecto integrador\publish\Microsoft.EntityFrameworkCore.dll
+E:\proyecto integrador\publish\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\proyecto integrador\publish\Microsoft.EntityFrameworkCore.Relational.dll
+E:\proyecto integrador\publish\Microsoft.EntityFrameworkCore.SqlServer.dll
+E:\proyecto integrador\publish\Microsoft.Extensions.Caching.Abstractions.dll
+E:\proyecto integrador\publish\Microsoft.Extensions.Caching.Memory.dll
+E:\proyecto integrador\publish\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\proyecto integrador\publish\Microsoft.Extensions.DependencyInjection.dll
+E:\proyecto integrador\publish\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\proyecto integrador\publish\Microsoft.Extensions.Identity.Core.dll
+E:\proyecto integrador\publish\Microsoft.Extensions.Identity.Stores.dll
+E:\proyecto integrador\publish\Microsoft.Extensions.Logging.dll
+E:\proyecto integrador\publish\Microsoft.Extensions.Logging.Abstractions.dll
+E:\proyecto integrador\publish\Microsoft.Extensions.Options.dll
+E:\proyecto integrador\publish\Microsoft.Extensions.Primitives.dll
+E:\proyecto integrador\publish\Microsoft.Identity.Client.dll
+E:\proyecto integrador\publish\Microsoft.Identity.Client.Extensions.Msal.dll
+E:\proyecto integrador\publish\Microsoft.IdentityModel.Abstractions.dll
+E:\proyecto integrador\publish\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\proyecto integrador\publish\Microsoft.IdentityModel.Logging.dll
+E:\proyecto integrador\publish\Microsoft.IdentityModel.Protocols.dll
+E:\proyecto integrador\publish\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\proyecto integrador\publish\Microsoft.IdentityModel.Tokens.dll
+E:\proyecto integrador\publish\Microsoft.SqlServer.Server.dll
+E:\proyecto integrador\publish\Microsoft.Win32.SystemEvents.dll
+E:\proyecto integrador\publish\MySqlConnector.dll
+E:\proyecto integrador\publish\Pomelo.EntityFrameworkCore.MySql.dll
+E:\proyecto integrador\publish\System.Configuration.ConfigurationManager.dll
+E:\proyecto integrador\publish\System.Drawing.Common.dll
+E:\proyecto integrador\publish\System.IdentityModel.Tokens.Jwt.dll
+E:\proyecto integrador\publish\System.Memory.Data.dll
+E:\proyecto integrador\publish\System.Runtime.Caching.dll
+E:\proyecto integrador\publish\System.Security.Cryptography.ProtectedData.dll
+E:\proyecto integrador\publish\System.Security.Permissions.dll
+E:\proyecto integrador\publish\System.Windows.Extensions.dll
+E:\proyecto integrador\publish\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\proyecto integrador\publish\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\proyecto integrador\publish\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+E:\proyecto integrador\publish\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\proyecto integrador\publish\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\proyecto integrador\publish\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+E:\proyecto integrador\publish\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+E:\proyecto integrador\publish\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+E:\proyecto integrador\publish\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+E:\proyecto integrador\publish\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+E:\proyecto integrador\publish\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+E:\proyecto integrador\publish\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+E:\proyecto integrador\publish\proyecto integrador.deps.json

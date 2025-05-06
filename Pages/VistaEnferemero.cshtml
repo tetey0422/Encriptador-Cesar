@@ -1,0 +1,26 @@
+@page
+@model proyecto_integrador.Pages.VistaEnfermeroModel
+@{
+    ViewData["Title"] = "Citas del Día";
+}
+
+<h1>Citas del Día</h1>
+<p>Documento: @Model.Documento</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Hora</th>
+            <th>Paciente</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cita in Model.CitasDelDia)
+        {
+            <tr>
+                <td>@cita.Hora</td>
+                <td>@cita.Paciente</td>
+            </tr>
+        }
+    </tbody>
+</table>
