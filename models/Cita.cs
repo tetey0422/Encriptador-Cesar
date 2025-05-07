@@ -11,6 +11,9 @@ namespace WebApp.Models
         [Required]
         public DateTime Fecha { get; set; }
 
+        [Required] // Nueva propiedad
+        public TimeSpan Hora { get; set; }
+
         [Required]
         [StringLength(10)]
         public string PacienteDocumento { get; set; } = string.Empty;
@@ -18,8 +21,5 @@ namespace WebApp.Models
         [Required]
         [StringLength(10)]
         public string EnfermeroDocumento { get; set; } = string.Empty;
-
-        [Required] // Nueva propiedad
-        public TimeSpan Hora { get; set; }
     }
 }

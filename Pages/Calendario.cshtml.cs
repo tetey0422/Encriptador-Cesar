@@ -1,39 +1,47 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WebApp.Data;
+using WebApp.Models;
 
-public class CalendarioModel : PageModel
+namespace proyecto_integrador.Pages
 {
-    public string Documento { get; set; } = string.Empty;
-    public List<DiaCitas> Dias { get; set; } = new List<DiaCitas>();
-
-    public void OnGet(string documento)
+    public class CalendarioModel : PageModel
     {
-        Documento = documento;
-        Dias = GenerarCalendario();
-    }
+        private readonly ApplicationDbContext _context;
 
-    private List<DiaCitas> GenerarCalendario()
-    {
-        var random = new Random();
-        var dias = new List<DiaCitas>();
-
-        for (int dia = 1; dia <= DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month); dia++)
+        public CalendarioModel(ApplicationDbContext context)
         {
-            var disponibilidad = random.Next(0, 100); // Generar disponibilidad aleatoria
-            dias.Add(new DiaCitas
-            {
-                Dia = dia,
-                Disponibilidad = disponibilidad,
-                Color = disponibilidad > 40 ? "green" : disponibilidad > 0 ? "orange" : "red"
-            });
+            _context = context;
         }
 
-        return dias;
-    }
+        public string Documento { get; set; } = string.Empty;
+        public List<DiaModel> Dias { get; set; } = new List<DiaModel>();
 
-    public class DiaCitas
-    {
-        public int Dia { get; set; }
-        public int Disponibilidad { get; set; }
-        public string Color { get; set; } = string.Empty;
+        // Agregar la propiedad Usuario
+        public Usuario Usuario { get; set; } = new Usuario();
+
+        public void OnGet(string documento)
+        {
+            Documento = documento;
+
+            // Obtener el usuario desde la base de datos
+            Usuario = _context.Usuarios.FirstOrDefault(u => u.Documento == documento) ?? new Usuario();
+
+            // Generar días de la semana con disponibilidad simulada
+            var diasSemana = new[] { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado" };
+            var random = new Random();
+
+            foreach (var dia in diasSemana)
+            {
+                var disponibilidad = random.Next(0, 101); // Simular disponibilidad entre 0% y 100%
+                var color = disponibilidad > 40 ? "green" : disponibilidad > 0 ? "yellow" : "red";
+
+                Dias.Add(new DiaModel
+                {
+                    Dia = dia,
+                    Disponibilidad = disponibilidad,
+                    Color = color
+                });
+            }
+        }
     }
 }

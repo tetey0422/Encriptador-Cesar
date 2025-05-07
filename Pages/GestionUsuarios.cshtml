@@ -1,5 +1,5 @@
 @page
-@model GestionUsuariosModel
+@model proyecto_integrador.Pages.GestionUsuariosModel
 @{
     ViewData["Title"] = "Gestión de Usuarios";
 }
@@ -35,6 +35,8 @@
             <th>Documento</th>
             <th>Es Empleado</th>
             <th>Es Administrador</th>
+            <th>Activo</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -45,6 +47,15 @@
                 <td>@usuario.Documento</td>
                 <td>@usuario.EsEmpleado</td>
                 <td>@usuario.EsAdministrador</td>
+                <td>@usuario.Activo</td>
+                <td>
+                    <form method="post" asp-page-handler="ToggleActivo">
+                        <input type="hidden" name="id" value="@usuario.Id" />
+                        <button type="submit">
+                            @(usuario.Activo ? "Suspender" : "Activar")
+                        </button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>

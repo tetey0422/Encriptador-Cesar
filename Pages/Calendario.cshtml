@@ -1,39 +1,35 @@
 @page
-@model CalendarioModel
+@model proyecto_integrador.Pages.CalendarioModel
 @{
-    ViewData["Title"] = "Calendario de Citas";
+    ViewData["Title"] = "Calendario";
 }
 
-<h1>Calendario de Citas</h1>
-<p>Documento: @Model.Documento</p>
+<h1>Editar Datos Básicos</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>Día</th>
-            <th>Disponibilidad</th>
-            <th>Acción</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var dia in Model.Dias)
-        {
-            <tr>
-                <td>@dia.Dia</td>
-                <td style="background-color: @dia.Color;">@dia.Disponibilidad%</td>
-                <td>
-                    @if (dia.Disponibilidad > 0)
-                    {
-                        <a asp-page="ReservarCita" asp-route-dia="@dia.Dia" asp-route-documento="@Model.Documento" class="btn btn-primary">
-                            Reservar
-                        </a>
-                    }
-                    else
-                    {
-                        <span>No disponible</span>
-                    }
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<form method="post">
+    <div class="form-group">
+        <label for="Nombre">Nombre</label>
+        <input asp-for="Usuario.Nombre" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label for="Documento">Documento</label>
+        <input type="number" asp-for="Usuario.Documento" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label for="Celular">Número de Celular</label>
+        <input type="number" asp-for="Usuario.Celular" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Correo">Correo Electrónico</label>
+        <input type="email" asp-for="Usuario.Correo" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Direccion">Dirección</label>
+        <input asp-for="Usuario.Direccion" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Ciudad">Ciudad</label>
+        <input asp-for="Usuario.Ciudad" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+</form>

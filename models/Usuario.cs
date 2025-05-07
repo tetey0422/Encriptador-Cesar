@@ -19,6 +19,21 @@ namespace WebApp.Models
         public bool EsEmpleado { get; set; }
 
         [Required]
-        public bool EsAdministrador { get; set; } // Nuevo campo para identificar administradores
+        public bool EsAdministrador { get; set; }
+
+        [StringLength(15)]
+        public string Celular { get; set; } = string.Empty;
+
+        [StringLength(50)]
+        public string Correo { get; set; } = string.Empty;
+
+        [StringLength(100)]
+        public string Direccion { get; set; } = string.Empty;
+
+        [StringLength(50)]
+        public string Ciudad { get; set; } = string.Empty;
+        
+        [Required]
+        public bool Activo { get; set; } = true; // Indica si el usuario está activo o suspendido
     }
 }

@@ -52,5 +52,20 @@ namespace proyecto_integrador.Pages
 
             return RedirectToPage();
         }
+
+        public IActionResult OnPostToggleActivo(int id)
+        {
+            var usuario = _context.Usuarios.FirstOrDefault(u => u.Id == id);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+
+            // Cambiar el estado de activo
+            usuario.Activo = !usuario.Activo;
+            _context.SaveChanges();
+
+            return RedirectToPage();
+        }
     }
 }

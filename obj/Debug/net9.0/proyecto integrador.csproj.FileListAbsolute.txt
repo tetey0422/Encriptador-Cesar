@@ -20,10 +20,13 @@ E:\proyecto integrador\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.Intern
 E:\proyecto integrador\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 E:\proyecto integrador\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 E:\proyecto integrador\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+E:\proyecto integrador\bin\Debug\net9.0\Microsoft.Build.Locator.dll
 E:\proyecto integrador\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
 E:\proyecto integrador\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
 E:\proyecto integrador\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
 E:\proyecto integrador\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+E:\proyecto integrador\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+E:\proyecto integrador\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
 E:\proyecto integrador\bin\Debug\net9.0\Microsoft.Data.SqlClient.dll
 E:\proyecto integrador\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
 E:\proyecto integrador\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -55,6 +58,7 @@ E:\proyecto integrador\bin\Debug\net9.0\Microsoft.Win32.SystemEvents.dll
 E:\proyecto integrador\bin\Debug\net9.0\Mono.TextTemplating.dll
 E:\proyecto integrador\bin\Debug\net9.0\MySqlConnector.dll
 E:\proyecto integrador\bin\Debug\net9.0\Pomelo.EntityFrameworkCore.MySql.dll
+E:\proyecto integrador\bin\Debug\net9.0\System.ClientModel.dll
 E:\proyecto integrador\bin\Debug\net9.0\System.CodeDom.dll
 E:\proyecto integrador\bin\Debug\net9.0\System.Composition.AttributedModel.dll
 E:\proyecto integrador\bin\Debug\net9.0\System.Composition.Convention.dll
@@ -63,11 +67,13 @@ E:\proyecto integrador\bin\Debug\net9.0\System.Composition.Runtime.dll
 E:\proyecto integrador\bin\Debug\net9.0\System.Composition.TypedParts.dll
 E:\proyecto integrador\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
 E:\proyecto integrador\bin\Debug\net9.0\System.Drawing.Common.dll
+E:\proyecto integrador\bin\Debug\net9.0\System.Formats.Asn1.dll
 E:\proyecto integrador\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
 E:\proyecto integrador\bin\Debug\net9.0\System.Memory.Data.dll
 E:\proyecto integrador\bin\Debug\net9.0\System.Runtime.Caching.dll
 E:\proyecto integrador\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
 E:\proyecto integrador\bin\Debug\net9.0\System.Security.Permissions.dll
+E:\proyecto integrador\bin\Debug\net9.0\System.Text.Json.dll
 E:\proyecto integrador\bin\Debug\net9.0\System.Windows.Extensions.dll
 E:\proyecto integrador\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
 E:\proyecto integrador\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
@@ -121,6 +127,19 @@ E:\proyecto integrador\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.res
 E:\proyecto integrador\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 E:\proyecto integrador\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 E:\proyecto integrador\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\proyecto integrador\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\proyecto integrador\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\proyecto integrador\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\proyecto integrador\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\proyecto integrador\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\proyecto integrador\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\proyecto integrador\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\proyecto integrador\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\proyecto integrador\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\proyecto integrador\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\proyecto integrador\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\proyecto integrador\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\proyecto integrador\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 E:\proyecto integrador\bin\Debug\net9.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
 E:\proyecto integrador\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
 E:\proyecto integrador\bin\Debug\net9.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
@@ -141,6 +160,7 @@ E:\proyecto integrador\obj\Debug\net9.0\proyecto integrador.csproj.CoreCompileIn
 E:\proyecto integrador\obj\Debug\net9.0\proyecto integrador.MvcApplicationPartsAssemblyInfo.cache
 E:\proyecto integrador\obj\Debug\net9.0\proyecto integrador.RazorAssemblyInfo.cache
 E:\proyecto integrador\obj\Debug\net9.0\proyecto integrador.RazorAssemblyInfo.cs
+E:\proyecto integrador\obj\Debug\net9.0\proyecto integrador.sourcelink.json
 E:\proyecto integrador\obj\Debug\net9.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
 E:\proyecto integrador\obj\Debug\net9.0\scopedcss\bundle\proyecto integrador.styles.css
 E:\proyecto integrador\obj\Debug\net9.0\scopedcss\projectbundle\proyecto integrador.bundle.scp.css
@@ -223,22 +243,3 @@ E:\proyecto integrador\obj\Debug\net9.0\refint\proyecto integrador.dll
 E:\proyecto integrador\obj\Debug\net9.0\proyecto integrador.pdb
 E:\proyecto integrador\obj\Debug\net9.0\proyecto integrador.genruntimeconfig.cache
 E:\proyecto integrador\obj\Debug\net9.0\ref\proyecto integrador.dll
-E:\proyecto integrador\bin\Debug\net9.0\Microsoft.Build.Locator.dll
-E:\proyecto integrador\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
-E:\proyecto integrador\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
-E:\proyecto integrador\bin\Debug\net9.0\System.ClientModel.dll
-E:\proyecto integrador\bin\Debug\net9.0\System.Formats.Asn1.dll
-E:\proyecto integrador\bin\Debug\net9.0\System.Text.Json.dll
-E:\proyecto integrador\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\proyecto integrador\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\proyecto integrador\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\proyecto integrador\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\proyecto integrador\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\proyecto integrador\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\proyecto integrador\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\proyecto integrador\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\proyecto integrador\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\proyecto integrador\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\proyecto integrador\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\proyecto integrador\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
-E:\proyecto integrador\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll

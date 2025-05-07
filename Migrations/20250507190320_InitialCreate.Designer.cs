@@ -12,7 +12,7 @@ using WebApp.Data;
 namespace proyecto_integrador.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250506210628_InitialCreate")]
+    [Migration("20250507190320_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -51,6 +51,10 @@ namespace proyecto_integrador.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EnfermeroDocumento");
+
+                    b.HasIndex("PacienteDocumento");
+
                     b.ToTable("Citas");
                 });
 
@@ -61,6 +65,29 @@ namespace proyecto_integrador.Migrations
                         .HasColumnType("int");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Celular")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("varchar(15)");
+
+                    b.Property<string>("Ciudad")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Correo")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Direccion")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Documento")
                         .IsRequired()
@@ -81,6 +108,23 @@ namespace proyecto_integrador.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("WebApp.Models.Cita", b =>
+                {
+                    b.HasOne("WebApp.Models.Usuario", null)
+                        .WithMany()
+                        .HasForeignKey("EnfermeroDocumento")
+                        .HasPrincipalKey("Documento")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("WebApp.Models.Usuario", null)
+                        .WithMany()
+                        .HasForeignKey("PacienteDocumento")
+                        .HasPrincipalKey("Documento")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
