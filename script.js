@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Evento para encriptar texto
     formEncrypt.addEventListener("submit", (event) => {
-        event.preventDefault(); // Evitar que el formulario se envíe
+        event.preventDefault();
 
         const text = textInput.value.trim();
         const rot = parseInt(rotSelect.value);
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Evento para desencriptar archivo XML
     formDecrypt.addEventListener("submit", (event) => {
-        event.preventDefault(); // Evitar que el formulario se envíe
+        event.preventDefault();
 
         const file = fileInput.files[0];
         if (!file) {
@@ -43,20 +43,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(content, "application/xml");
 
-            // Verificar si el archivo tiene errores de análisis
             if (xmlDoc.getElementsByTagName("parsererror").length > 0) {
                 alert("El archivo XML no es válido o tiene errores de formato.");
                 return;
             }
 
-            // Verificar si contiene la etiqueta <encrypted>
             const encryptedMessage = xmlDoc.getElementsByTagName("encrypted")[0]?.textContent;
             if (!encryptedMessage) {
                 alert("El archivo XML no contiene un mensaje encriptado válido.");
                 return;
             }
 
-            // Identificar el ROT y descifrar el mensaje
             const result = identifyROT(encryptedMessage);
             if (result) {
                 alert(`ROT identificado: ${result.rot}\nMensaje descifrado: ${result.decryptedMessage}`);
@@ -75,7 +72,7 @@ function cesarEncrypt(text, shift) {
             const base = char === char.toUpperCase() ? 65 : 97;
             return String.fromCharCode(((char.charCodeAt(0) - base + shift) % 26) + base);
         }
-        return char; // Dejar caracteres no alfabéticos sin cambios
+        return char;
     }).join("");
 }
 
@@ -85,7 +82,7 @@ function cesarDecrypt(text, shift) {
             const base = char === char.toUpperCase() ? 65 : 97;
             return String.fromCharCode(((char.charCodeAt(0) - base - shift + 26) % 26) + base);
         }
-        return char; // Dejar caracteres no alfabéticos sin cambios
+        return char;
     }).join("");
 }
 
@@ -100,7 +97,6 @@ function identifyROT(encryptedText) {
 }
 
 function isReadable(text) {
-    // Verificar si el texto descifrado contiene palabras legibles (puedes personalizar esta lógica)
     const commonWords = ["el", "la", "los", "las", "de", "del", "y", "en", "a", "que", "es", "un", "una", "por", "con", "para", "hola", "yo", "tú", "él", "ella", "nos", "ellos", "esto", "eso", "sí", "no", "hay", "lo", "al", "mi", "me", "te", "se", "su", "bien", "mal", "más", "menos", "muy", "como", "pero", "ya", "sí", "gracias", "también", "aquí", "allí", "cuando", "donde", "quién", "qué", "cómo", "porque", "nada", "todo", "hoy", "mañana", "ayer", "amigo", "casa", "comer", "beber", "hacer", "ir", "venir", "estar", "tener", "ver", "decir", "dar"];
     return commonWords.some((word) => text.toLowerCase().includes(word));
 }
