@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <title>Encriptador</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Encriptador César</h1>
+    </header>
+    <main>
+        <form action="/encrypt" method="post">
+            <label for="textInput">Texto a encriptar:</label>
+            <input type="text" id="textInput" name="text" required>
+            <label for="rotSelect">Selecciona el tipo de encriptado (ROT):</label>
+            <select id="rotSelect" name="rot">
+                <option value="" disabled selected>Selecciona un ROT</option>
+                <option value="0">ROT0</option>
+                <option value="1">ROT1</option>
+                <option value="2">ROT2</option>
+                <option value="3">ROT3</option>
+                <option value="4">ROT4</option>
+                <option value="5">ROT5</option>
+                <option value="6">ROT6</option>
+                <option value="7">ROT7</option>
+                <option value="8">ROT8</option>
+                <option value="9">ROT9</option>
+                <option value="10">ROT10</option>
+                <option value="11">ROT11</option>
+                <option value="12">ROT12</option>
+                <option value="13">ROT13</option>
+                <option value="14">ROT14</option>
+                <option value="15">ROT15</option>
+                <option value="16">ROT16</option>
+                <option value="17">ROT17</option>
+                <option value="18">ROT18</option>
+                <option value="19">ROT19</option>
+                <option value="20">ROT20</option>
+                <option value="21">ROT21</option>
+                <option value="22">ROT22</option>
+                <option value="23">ROT23</option>
+                <option value="24">ROT24</option>
+                <option value="25">ROT25</option>
+                <option value="26">ROT26</option>
+            </select>
+            <button type="submit">Encriptar</button>
+        </form>
+        <h2>Desencriptar archivo</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="fileInput">Selecciona un archivo XML:</label>
+            <input type="file" id="fileInput" name="file" accept=".xml">
+            <button type="submit">Desencriptar</button>
+        </form>
+    </main>
+    <footer class="footer">
+        <p>©Copyright 2025, jefreyzanches.A . Todos los derechos reservados.</p>
+    </footer>
+</body>
+
+</html>
