@@ -33,7 +33,6 @@ h2 {
     color: #2c3e50;
     font-size: 1.25rem;
     margin: 1.25rem 0 1rem;
-    text-align: center;
 }
 
 /* Estilos de formularios */
@@ -85,6 +84,30 @@ button {
 
 button:hover {
     background-color: #2980b9;
+}
+
+/* Resultado de desencriptación */
+.result-container {
+    background-color: #f0f8ff;
+    border-left: 0.25rem solid #3498db;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    border-radius: 0.25rem;
+    display: none; /* Se mostrará dinámicamente con JS */
+}
+
+.result-container h3 {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.result-item {
+    margin-bottom: 0.5rem;
+}
+
+.result-label {
+    font-weight: bold;
 }
 
 /* Footer */
@@ -157,4 +180,4 @@ button:hover {
     .footer {
         margin-top: 3rem;
     }
-} 
+}

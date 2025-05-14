@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
-    <title>Encriptador</title>
+    <meta http-equiv="Content-Language" content="es">
+    <title>Encriptador César</title>
     <script defer src="script.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -17,7 +17,7 @@
     <main>
         <form action="/encrypt" method="post">
             <label for="textInput">Texto a encriptar:</label>
-            <input type="text" id="textInput" name="text" required>
+            <input type="text" id="textInput" name="text" placeholder="Escribe el texto aquí" required>
             <label for="rotSelect">Selecciona el tipo de encriptado (ROT):</label>
             <select id="rotSelect" name="rot">
                 <option value="" disabled selected>Selecciona un ROT</option>
@@ -50,12 +50,24 @@
             </select>
             <button type="submit">Encriptar</button>
         </form>
+        
         <h2>Desencriptar archivo</h2>
-        <form action="/upload" method="post" enctype="multipart/form-data">
+        <form id="decryptForm" method="post" enctype="multipart/form-data">
             <label for="fileInput">Selecciona un archivo XML:</label>
             <input type="file" id="fileInput" name="file" accept=".xml">
             <button type="submit">Desencriptar</button>
         </form>
+        
+        <!-- Contenedor para mostrar el resultado del descifrado -->
+        <div id="resultContainer" class="result-container">
+            <h3>Resultado del descifrado:</h3>
+            <div class="result-item">
+                <span class="result-label">ROT identificado:</span> ROT<span id="rotResult"></span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Mensaje descifrado:</span> <span id="messageResult"></span>
+            </div>
+        </div>
     </main>
     <footer class="footer">
         <p>©Copyright 2025, jefreyzanches.A . Todos los derechos reservados.</p>
