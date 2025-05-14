@@ -101,7 +101,7 @@ function identifyROT(encryptedText) {
 
 function isReadable(text) {
     // Verificar si el texto descifrado contiene palabras legibles (puedes personalizar esta lógica)
-    const commonWords = ["el", "la", "de", "y", "que", "en", "un", "es", "por", "con"];
+    const commonWords = ["el", "la", "los", "las", "de", "del", "y", "en", "a", "que", "es", "un", "una", "por", "con", "para", "hola", "yo", "tú", "él", "ella", "nos", "ellos", "esto", "eso", "sí", "no", "hay", "lo", "al", "mi", "me", "te", "se", "su", "bien", "mal", "más", "menos", "muy", "como", "pero", "ya", "sí", "gracias", "también", "aquí", "allí", "cuando", "donde", "quién", "qué", "cómo", "porque", "nada", "todo", "hoy", "mañana", "ayer", "amigo", "casa", "comer", "beber", "hacer", "ir", "venir", "estar", "tener", "ver", "decir", "dar"];
     return commonWords.some((word) => text.toLowerCase().includes(word));
 }
 
