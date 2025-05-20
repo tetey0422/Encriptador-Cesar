@@ -5,21 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Language" content="es">
-    <title>Encriptador César</title>
+    <title>Encriptador César - Mensajes Secretos</title>
     <script defer src="script.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <header>
-        <h1>Encriptador César</h1>
+        <h1>Encriptador César - Mensajes Secretos</h1>
     </header>
     <main>
-        <form action="/encrypt" method="post">
-            <label for="textInput">Texto a encriptar:</label>
-            <input type="text" id="textInput" name="text" placeholder="Escribe el texto aquí" required>
+        <form id="encryptForm" action="/encrypt" method="post">
+            <h2>Crear mensaje secreto</h2>
+            
+            <label for="senderName">Nombre del remitente:</label>
+            <input type="text" id="senderName" name="senderName" placeholder="Tu nombre" required>
+            
+            <label for="secretMessage">Mensaje secreto:</label>
+            <textarea id="secretMessage" name="secretMessage" placeholder="Escribe tu mensaje secreto aquí" required></textarea>
+            
+            <label for="secretCode">Código:</label>
+            <input type="text" id="secretCode" name="secretCode" placeholder="Código secreto" required>
+            
+            <label for="messageDate">Fecha:</label>
+            <input type="date" id="messageDate" name="messageDate" required>
+            
             <label for="rotSelect">Selecciona el tipo de encriptado (ROT):</label>
-            <select id="rotSelect" name="rot">
+            <select id="rotSelect" name="rot" required>
                 <option value="" disabled selected>Selecciona un ROT</option>
                 <option value="0">ROT0</option>
                 <option value="1">ROT1</option>
@@ -48,22 +60,32 @@
                 <option value="24">ROT24</option>
                 <option value="25">ROT25</option>
             </select>
-            <button type="submit">Encriptar</button>
+            <button type="submit">Generar mensaje secreto</button>
         </form>
         
-        <h2>Desencriptar archivo</h2>
+        <h2>Descifrar mensaje secreto</h2>
         <form id="decryptForm" method="post" enctype="multipart/form-data">
             <label for="fileInput">Selecciona un archivo XML:</label>
             <input type="file" id="fileInput" name="file" accept=".xml">
-            <button type="submit">Desencriptar</button>
+            <button type="submit">Descifrar mensaje</button>
         </form>
+        
         <div id="resultContainer" class="result-container">
-            <h3>Resultado del descifrado:</h3>
+            <h3>Mensaje descifrado:</h3>
             <div class="result-item">
-                <span class="result-label">ROT identificado:</span> ROT<span id="rotResult"></span>
+                <span class="result-label">Remitente:</span> <span id="senderResult"></span>
             </div>
             <div class="result-item">
-                <span class="result-label">Mensaje descifrado:</span> <span id="messageResult"></span>
+                <span class="result-label">Mensaje:</span> <span id="messageResult"></span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Código:</span> <span id="codeResult"></span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">Fecha:</span> <span id="dateResult"></span>
+            </div>
+            <div class="result-item">
+                <span class="result-label">ROT utilizado:</span> ROT<span id="rotResult"></span>
             </div>
         </div>
     </main>

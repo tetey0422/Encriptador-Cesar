@@ -1,49 +1,84 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const formEncrypt = document.querySelector("form[action='/encrypt']");
-    const formDecrypt = document.getElementById("decryptForm");
-    const textInput = document.getElementById("textInput");
+    const encryptForm = document.getElementById("encryptForm");
+    const decryptForm = document.getElementById("decryptForm");
+    const senderName = document.getElementById("senderName");
+    const secretMessage = document.getElementById("secretMessage");
+    const secretCode = document.getElementById("secretCode");
+    const messageDate = document.getElementById("messageDate");
     const rotSelect = document.getElementById("rotSelect");
     const fileInput = document.getElementById("fileInput");
     const resultContainer = document.getElementById("resultContainer");
-    const rotResult = document.getElementById("rotResult");
+    const senderResult = document.getElementById("senderResult");
     const messageResult = document.getElementById("messageResult");
+    const codeResult = document.getElementById("codeResult");
+    const dateResult = document.getElementById("dateResult");
+    const rotResult = document.getElementById("rotResult");
 
-    // Evento para encriptar texto
-    formEncrypt.addEventListener("submit", (event) => {
+    // Establecer la fecha actual como valor predeterminado
+    const today = new Date().toISOString().split('T')[0];
+    messageDate.value = today;
+
+    // Evento para encriptar y generar XML
+    encryptForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        const text = textInput.value.trim();
+        // Validar los campos
+        const name = senderName.value.trim();
+        const message = secretMessage.value.trim();
+        const code = secretCode.value.trim();
+        const date = messageDate.value;
         const rot = parseInt(rotSelect.value);
 
-        if (!text) {
-            showError("Por favor, ingresa un texto para encriptar.");
+        if (!name) {
+            showNotification("Por favor, ingresa tu nombre.", "error");
+            return;
+        }
+
+        if (!message) {
+            showNotification("Por favor, ingresa un mensaje secreto.", "error");
+            return;
+        }
+
+        if (!code) {
+            showNotification("Por favor, ingresa un código secreto.", "error");
+            return;
+        }
+
+        if (!date) {
+            showNotification("Por favor, selecciona una fecha.", "error");
             return;
         }
 
         if (isNaN(rot)) {
-            showError("Por favor, selecciona un ROT válido.");
+            showNotification("Por favor, selecciona un ROT válido.", "error");
             return;
         }
 
-        const encryptedText = cesarEncrypt(text, rot);
-        downloadAsXML(encryptedText);
+        // Encriptar los datos
+        const encryptedName = cesarEncrypt(name, rot);
+        const encryptedMessage = cesarEncrypt(message, rot);
+        const encryptedCode = cesarEncrypt(code, rot);
+        const encryptedDate = cesarEncrypt(date, rot);
+
+        // Generar y descargar el XML
+        generateAndDownloadXML(name, encryptedName, encryptedMessage, encryptedCode, encryptedDate, rot);
         
         // Mostrar mensaje de éxito
-        showSuccess(`Texto encriptado con ROT${rot} y descargado como archivo XML.`);
+        showNotification(`Mensaje secreto generado y guardado como MensajeSecreto_${name}.xml`, "success");
     });
 
     // Evento para desencriptar archivo XML
-    formDecrypt.addEventListener("submit", (event) => {
+    decryptForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
         const file = fileInput.files[0];
         if (!file) {
-            showError("Por favor, selecciona un archivo XML.");
+            showNotification("Por favor, selecciona un archivo XML.", "error");
             return;
         }
 
         if (!file.name.endsWith(".xml")) {
-            showError("El archivo seleccionado no es un XML válido.");
+            showNotification("El archivo seleccionado no es un XML válido.", "error");
             return;
         }
 
@@ -55,25 +90,37 @@ document.addEventListener("DOMContentLoaded", () => {
                 const xmlDoc = parser.parseFromString(content, "application/xml");
 
                 if (xmlDoc.getElementsByTagName("parsererror").length > 0) {
-                    showError("El archivo XML no es válido o tiene errores de formato.");
+                    showNotification("El archivo XML no es válido o tiene errores de formato.", "error");
                     return;
                 }
 
-                const encryptedMessage = xmlDoc.getElementsByTagName("encrypted")[0]?.textContent;
-                if (!encryptedMessage) {
-                    showError("El archivo XML no contiene un mensaje encriptado válido.");
+                // Extraer información del XML
+                const encryptedSender = xmlDoc.getElementsByTagName("remitente")[0]?.textContent;
+                const encryptedMessage = xmlDoc.getElementsByTagName("mensaje")[0]?.textContent;
+                const encryptedCode = xmlDoc.getElementsByTagName("codigo")[0]?.textContent;
+                const encryptedDate = xmlDoc.getElementsByTagName("fecha")[0]?.textContent;
+                const rot = parseInt(xmlDoc.getElementsByTagName("rot")[0]?.textContent);
+
+                if (!encryptedSender || !encryptedMessage || !encryptedCode || !encryptedDate || isNaN(rot)) {
+                    showNotification("El archivo XML no contiene todos los datos necesarios.", "error");
                     return;
                 }
 
-                const result = identifyROT(encryptedMessage);
-                if (result) {
-                    // Mostrar el resultado en la interfaz
-                    displayResult(result.rot, result.decryptedMessage);
-                } else {
-                    showError("No se pudo identificar un ROT válido para este mensaje.");
-                }
+                // Descifrar con el ROT proporcionado
+                const decryptedSender = cesarDecrypt(encryptedSender, rot);
+                const decryptedMessage = cesarDecrypt(encryptedMessage, rot);
+                const decryptedCode = cesarDecrypt(encryptedCode, rot);
+                const decryptedDate = cesarDecrypt(encryptedDate, rot);
+
+                // Formatear la fecha para mostrarla
+                const formattedDate = formatDate(decryptedDate);
+
+                // Mostrar el resultado
+                displayResult(decryptedSender, decryptedMessage, decryptedCode, formattedDate, rot);
+                
+                showNotification("Mensaje descifrado correctamente.", "success");
             } catch (error) {
-                showError("Ocurrió un error al procesar el archivo XML.");
+                showNotification("Ocurrió un error al procesar el archivo XML.", "error");
                 console.error(error);
             }
         };
@@ -81,23 +128,39 @@ document.addEventListener("DOMContentLoaded", () => {
         reader.readAsText(file);
     });
 
-    // Función para mostrar errores con estilo
-    function showError(message) {
-        // Puedes mejorar esto implementando un sistema de notificaciones
-        alert(message);
-    }
-    
-    // Función para mostrar éxito con estilo
-    function showSuccess(message) {
-        // Puedes mejorar esto implementando un sistema de notificaciones
-        alert(message);
+    // Función para mostrar notificaciones
+    function showNotification(message, type) {
+        // Eliminar notificaciones anteriores
+        const oldNotifications = document.querySelectorAll('.notification');
+        oldNotifications.forEach(n => n.remove());
+        
+        // Crear nueva notificación
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.textContent = message;
+        
+        // Añadir al DOM
+        document.body.appendChild(notification);
+        
+        // Aplicar animación
+        setTimeout(() => {
+            notification.style.opacity = '1';
+        }, 10);
+        
+        // Eliminar después de 3 segundos
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
     }
     
     // Función para mostrar el resultado del descifrado
-    function displayResult(rot, message) {
+    function displayResult(sender, message, code, date, rot) {
         // Actualizar el contenido
-        rotResult.textContent = rot;
+        senderResult.textContent = sender;
         messageResult.textContent = message;
+        codeResult.textContent = code;
+        dateResult.textContent = date;
+        rotResult.textContent = rot;
         
         // Mostrar el contenedor de resultados
         resultContainer.style.display = "block";
@@ -105,8 +168,23 @@ document.addEventListener("DOMContentLoaded", () => {
         // Desplazarse hasta el resultado
         resultContainer.scrollIntoView({ behavior: "smooth" });
     }
+    
+    // Función para formatear la fecha
+    function formatDate(dateStr) {
+        try {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('es-ES', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+        } catch (e) {
+            return dateStr; // Si hay un error, devolver la cadena original
+        }
+    }
 });
 
+// Función para encriptar con cifrado César
 function cesarEncrypt(text, shift) {
     return text.replace(/[a-z]/gi, (char) => {
         const base = char === char.toUpperCase() ? 65 : 97;
@@ -114,6 +192,7 @@ function cesarEncrypt(text, shift) {
     });
 }
 
+// Función para desencriptar con cifrado César
 function cesarDecrypt(text, shift) {
     return text.replace(/[a-z]/gi, (char) => {
         const base = char === char.toUpperCase() ? 65 : 97;
@@ -121,45 +200,36 @@ function cesarDecrypt(text, shift) {
     });
 }
 
-function identifyROT(encryptedText) {
-    // Intentar cada posible ROT (0-25)
-    for (let rot = 0; rot < 26; rot++) {
-        const decryptedMessage = cesarDecrypt(encryptedText, rot);
-        if (isReadable(decryptedMessage)) {
-            return { rot, decryptedMessage };
-        }
+// Función para generar y descargar el archivo XML
+function generateAndDownloadXML(originalName, encryptedName, encryptedMessage, encryptedCode, encryptedDate, rot) {
+    // Escapar caracteres especiales XML
+    function escapeXML(str) {
+        return str.replace(/[<>&'"]/g, (char) => {
+            const escapeMap = { "<": "&lt;", ">": "&gt;", "&": "&amp;", "'": "&apos;", '"': "&quot;" };
+            return escapeMap[char];
+        });
     }
-    return null;
-}
 
-function isReadable(text) {
-    // Lista ampliada de palabras comunes en español para mejorar la detección
-    const commonWords = ["el", "la", "los", "las", "de", "del", "y", "en", "a", "que", "es", "un", "una", "por", "con", "para", "hola", "yo", "tú", "él", "ella", "nos", "ellos", "esto", "eso", "sí", "no", "hay", "lo", "al", "mi", "me", "te", "se", "su", "bien", "mal", "más", "menos", "muy", "como", "pero", "ya", "sí", "gracias", "también", "aquí", "allí", "cuando", "donde", "quién", "qué", "cómo", "porque", "nada", "todo", "hoy", "mañana", "ayer", "amigo", "casa", "comer", "beber", "hacer", "ir", "venir", "estar", "tener", "ver", "decir", "dar"];
-    
-    // Convertir el texto a minúsculas y dividirlo en palabras
-    const words = text.toLowerCase().match(/\b\w+\b/g) || [];
-    
-    // Verificar si al menos una palabra común está presente
-    return commonWords.some(word => words.includes(word)) || 
-           // Verificar si hay secuencias de letras que parecen palabras en español
-           (text.match(/[aeiouáéíóú]/gi)?.length || 0) > text.length * 0.2; // Al menos 20% de vocales
-}
-
-function downloadAsXML(encryptedText) {
-    const escapedText = encryptedText.replace(/[<>&'"]/g, (char) => {
-        const escapeMap = { "<": "&lt;", ">": "&gt;", "&": "&amp;", "'": "&apos;", '"': "&quot;" };
-        return escapeMap[char];
-    });
-
+    // Crear el contenido XML
     const xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
-<message>
-    <encrypted>${escapedText}</encrypted>
-</message>`;
+<mensajeSecreto>
+    <remitente>${escapeXML(encryptedName)}</remitente>
+    <mensaje>${escapeXML(encryptedMessage)}</mensaje>
+    <codigo>${escapeXML(encryptedCode)}</codigo>
+    <fecha>${escapeXML(encryptedDate)}</fecha>
+    <rot>${rot}</rot>
+</mensajeSecreto>`;
 
+    // Crear un blob y descargar
     const blob = new Blob([xmlContent], { type: "application/xml" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = "mensaje_encriptado.xml";
+    link.download = `MensajeSecreto_${originalName.replace(/\s+/g, '_')}.xml`;
+    
+    // Simular la creación de una carpeta "Mensajes"
+    console.log("Guardando en la carpeta 'Mensajes/'...");
+    // Nota: En entorno web no se puede crear una carpeta real sin acceso al servidor
+    
     link.click();
     URL.revokeObjectURL(link.href);
 }
